@@ -14,15 +14,18 @@
         :style="`transform: rotate(${boatOne.course}deg) translate(${boatOne.xPos}px, ${boatOne.yPos}px)`"
       />
       <!-- boat two red -->
-      <!-- <sailBoat id="boat-two"/> -->
+      <sailBoat
+        id="boat-two"
+        :style="`transform: rotate(${boatTwo.course}deg) translate(${boatTwo.xPos}px, ${boatTwo.yPos}px)`"
+      />
       
     </div>
 
     <button
-      @click="changeWindDirection"
+      @click="getNewSituation()"
       style="margin: 10px; padding: 10px;"
     >
-    Change Wind
+    Change Situation
     </button>
 
   </div>
@@ -32,6 +35,10 @@
 import sailBoat from '../components/sailboat.vue'
 import windArrow from '../components/wind-arrow.vue'
 
+
+function randNum(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+};
 
 export default {
   name: 'Home',
@@ -43,7 +50,14 @@ export default {
       windDirection: 180,
       boatOne: {
         // 360DEG COMPASS
-        course: 0,
+        course: 200,
+        // BETWEEN -200 AN 200
+        xPos: 0,
+        yPos: 0,
+      },
+      boatTwo: {
+        // 360DEG COMPASS
+        course: 200,
         // BETWEEN -200 AN 200
         xPos: 0,
         yPos: 0,
@@ -51,9 +65,21 @@ export default {
     }
   },
   methods: {
+    getNewSituation() {
+      this.changeWindDirection()
+      this.changeBoatParams()
+    },
     changeWindDirection() {
-      this.windDirection = Math.floor(Math.random() * (360 - 0 + 1) + 0)
-      console.log(this.windDirection)
+      this.windDirection = randNum(0,360);
+    },
+    changeBoatParams() {
+      let boats = [this.boatOne, this.boatTwo]
+      boats.forEach(boat => {
+        boat.course = randNum(0,360);
+        boat.xPos = randNum(0,200);
+        boat.yPos = randNum(0,200);
+      });
+
     }
   }
 }

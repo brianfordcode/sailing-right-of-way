@@ -15,9 +15,10 @@ export default {
 <style scoped>
 
 #wind-arrow {
-  opacity: 0.25;
+  /* opacity: 0.25; */
   position: absolute;
   margin-top: 10px;
+  z-index: 1000;
 }
 
 </style>
