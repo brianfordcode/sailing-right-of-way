@@ -9,11 +9,22 @@
       />
       
       <!-- boat one blue -->
-      <!-- <sailBoat id="boat-one"/> -->
+      <sailBoat
+        id="boat-one"
+        :style="`transform: rotate(${boatOne.course}deg) translate(${boatOne.xPos}px, ${boatOne.yPos}px)`"
+      />
       <!-- boat two red -->
       <!-- <sailBoat id="boat-two"/> -->
       
     </div>
+
+    <button
+      @click="changeWindDirection"
+      style="margin: 10px; padding: 10px;"
+    >
+    Change Wind
+    </button>
+
   </div>
 </template>
 
@@ -30,6 +41,19 @@ export default {
   data() {
     return {
       windDirection: 180,
+      boatOne: {
+        // 360DEG COMPASS
+        course: 0,
+        // BETWEEN -200 AN 200
+        xPos: 0,
+        yPos: 0,
+      },
+    }
+  },
+  methods: {
+    changeWindDirection() {
+      this.windDirection = Math.floor(Math.random() * (360 - 0 + 1) + 0)
+      console.log(this.windDirection)
     }
   }
 }
@@ -55,16 +79,15 @@ h1 {
   position: relative;
   display: flex;
   justify-content: space-around;
+  overflow: hidden;
 }
 
 #boat-one {
   fill: blue;
-  transform: translateX(50px);
 }
 
 #boat-two {
   fill: red;
-  transform: translateX(-50px);
 }
 
 </style>
