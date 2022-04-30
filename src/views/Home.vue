@@ -11,11 +11,13 @@
       <sailBoat
         id="boat-one"
         :style="`transform: rotate(${boatOne.course}deg) translate(${boatOne.xPos}px, ${boatOne.yPos}px)`"
+        :sailAngle="boatOne.sailAngle"
       />
       <!-- boat two red -->
       <sailBoat
         id="boat-two"
         :style="`transform: rotate(${boatTwo.course}deg) translate(${boatTwo.xPos}px, ${boatTwo.yPos}px)`"
+        :sailAngle="boatTwo.sailAngle"
       />
       
     </div>
@@ -51,11 +53,13 @@ export default {
         course: 0,
         xPos: 0,
         yPos: 0,
+        sailAngle: 0,
       },
       boatTwo: {
         course: 0,
         xPos: 0,
         yPos: 0,
+        sailAngle: 0,
       },
     }
   },
@@ -65,7 +69,7 @@ export default {
       this.changeBoatParams()
     },
     changeWindDirection() {
-      this.windDirection = randNum(0,360);
+      // this.windDirection = randNum(0,360);
     },
     changeBoatParams() {
       let boats = [this.boatOne, this.boatTwo]

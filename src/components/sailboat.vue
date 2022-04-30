@@ -7,14 +7,14 @@
             bx:shape="triangle 209.487 169.94 40.48 95.182 0.5 0 1@e27a41c4"
         />
         
-        <!-- MAIN -->
+        <!-- MAIN transform="matrix(0.838671, -0.544639, 0.544639, 0.838671, -83.873947, 160.846283)"-->
         <rect
             class="sail"
             x="227.597"
             y="221.946"
             width="3.94"
             height="39.522"
-            transform="matrix(0.838671, -0.544639, 0.544639, 0.838671, -83.873947, 160.846283)"
+            :transform="`rotate(${sailAngle} 227.597 221.946)`"
             bx:origin="0.5 0.001366"
         />
         
@@ -25,12 +25,23 @@
             y="181.52"
             width="3.431"
             height="26.789"
-            transform="matrix(0.83867, -0.54464, 0.54464, 0.83867, -62.018322, 154.629074)"
+            :transform="`rotate(${sailAngle} 227.836 181.52)`"
             bx:origin="0.63072 0.017918"
         />
 
     </svg>
 </template>
+
+<script>
+export default {
+    props: {
+        sailAngle: {
+            type: Number,
+            required: true,
+        }
+    }
+}
+</script>
 
 <style scoped>
     svg {
