@@ -7,7 +7,7 @@
             bx:shape="triangle 209.487 169.94 40.48 95.182 0.5 0 1@e27a41c4"
         />
         
-        <!-- MAIN transform="matrix(0.838671, -0.544639, 0.544639, 0.838671, -83.873947, 160.846283)"-->
+        <!-- MAIN -->
         <rect
             class="sail"
             x="227.597"
@@ -24,7 +24,7 @@
             y="181.52"
             width="3.431"
             height="26.789"
-            :transform="`rotate(${sailAngle} 227.836 181.52)`"
+            :transform="`rotate(${running ? -sailAngle : sailAngle} 227.836 181.52)`"
            
         />
 
@@ -37,6 +37,17 @@ export default {
         sailAngle: {
             type: Number,
             required: true,
+        },
+        course: {
+            type: Number,
+            required: true,
+        },
+    },
+    computed: {
+        running() {
+            const n = Math.abs(this.course)%360
+            console.log(n)
+            return n > 165 && n < 195
         }
     }
 }
