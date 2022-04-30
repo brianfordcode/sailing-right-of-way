@@ -15,7 +15,6 @@
             width="3.94"
             height="39.522"
             :transform="`rotate(${sailAngle} 227.597 221.946)`"
-            bx:origin="0.5 0.001366"
         />
         
         <!-- JIB -->
@@ -26,7 +25,7 @@
             width="3.431"
             height="26.789"
             :transform="`rotate(${sailAngle} 227.836 181.52)`"
-            bx:origin="0.63072 0.017918"
+           
         />
 
     </svg>
