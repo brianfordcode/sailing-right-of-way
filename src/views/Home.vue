@@ -4,9 +4,8 @@
 
     <div class="ocean-container">
 
-      <windArrow
-        :style="`transform: rotate(${windDirection}deg)`"
-      />
+      <!--  wind arrow -->
+      <windArrow :style="`transform: rotate(${windDirection}deg)`"/>
       
       <!-- boat one blue -->
       <sailBoat
@@ -49,16 +48,12 @@ export default {
     return {
       windDirection: 180,
       boatOne: {
-        // 360DEG COMPASS
-        course: 200,
-        // BETWEEN -200 AN 200
+        course: 0,
         xPos: 0,
         yPos: 0,
       },
       boatTwo: {
-        // 360DEG COMPASS
-        course: 200,
-        // BETWEEN -200 AN 200
+        course: 0,
         xPos: 0,
         yPos: 0,
       },
@@ -76,10 +71,14 @@ export default {
       let boats = [this.boatOne, this.boatTwo]
       boats.forEach(boat => {
         boat.course = randNum(0,360);
-        boat.xPos = randNum(0,200);
-        boat.yPos = randNum(0,200);
+        boat.xPos = randNum(0,175);
+        boat.yPos = randNum(0,175);
       });
-
+      console.log('wind direction: ', this.windDirection)
+      console.log('blue boat course: ', this.boatOne.course)
+      console.log('blue boat position: ', this.boatOne.xPos, this.boatOne.yPos)
+      console.log('red boat course: ', this.boatTwo.course)
+      console.log('red boat position: ', this.boatTwo.xPos, this.boatTwo.yPos)
     }
   }
 }
